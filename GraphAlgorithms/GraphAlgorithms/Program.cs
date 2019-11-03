@@ -20,29 +20,25 @@ namespace GraphAlgorithms.DetphFirstSearch
             var n9 = new Node("n9");
             var n10 = new Node("n10");
 
-
             n1.AddChildren(n2).AddChildren(n3).AddChildren(n4);
 
             n2.AddChildren(n5);
             n3.AddChildren(n5);
-
             n4.AddChildren(n6);
-
             n5.AddChildren(n7);
 
-            //n6.AddChildren(n8);
-            //n6.AddChildren(n9);
+            n6.AddChildren(n8);
+            n6.AddChildren(n9);
 
             n7.AddChildren(n10);
             n8.AddChildren(n10);
             n9.AddChildren(n10);
 
+            DoSearch.FindPath(n6, n10);
 
-            var result = DoSearch.FindPath(n6, n10);
-
-            foreach(var item in result)
+            foreach(var item in DoSearch.fullPath)
             {
-                Console.Write($"{item.Name} => ");
+                Console.Write($"{item.Name} ");
             }
 
         }
@@ -74,30 +70,31 @@ namespace GraphAlgorithms.DetphFirstSearch
 
         public class DoSearch
         {
-           static LinkedList<Node> fullPath = new LinkedList<Node>();
+           public static LinkedList<Node> fullPath { get; set; }
            static List<Node> visited = new List<Node>();
 
-            public static LinkedList<Node> FindPath(Node start, Node end)
+            public static bool FindPath(Node start, Node end)
             {
-                fullPath.AddLast(start);
+                if(start == end)
+                {
+                    return true;
+                }
+
+                visited.Add(start);
 
                 foreach(var item in start.Childrens.Where(x=>!visited.Contains(x)))
                 {
-                    visited.Add(item);
-                    if (item == end)
+                    if(FindPath(item, end))
                     {
-                        fullPath.AddLast(item);
-                        return fullPath;
+                        fullPath.AddFirst(item);
+                        visited.Add(item);
+                        return true;
                     }
-                    else
-                    {
-                        FindPath(item, end);
-                        break;
-                    }
-                } 
-                 return fullPath;
-               
+                }
+
+                return false;
             }
+
         }
 
     }
