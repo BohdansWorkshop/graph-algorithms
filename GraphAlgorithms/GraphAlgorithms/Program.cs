@@ -70,7 +70,7 @@ namespace GraphAlgorithms.DetphFirstSearch
 
         public class DoSearch
         {
-           public static LinkedList<Node> fullPath { get; set; }
+            public static LinkedList<Node> fullPath { get; set; } = new LinkedList<Node>();
            static List<Node> visited = new List<Node>();
 
             public static bool FindPath(Node start, Node end)
@@ -91,7 +91,6 @@ namespace GraphAlgorithms.DetphFirstSearch
                         return true;
                     }
                 }
-
                 return false;
             }
 
