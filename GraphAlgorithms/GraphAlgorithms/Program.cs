@@ -34,9 +34,9 @@ namespace GraphAlgorithms.DetphFirstSearch
             n8.AddChildren(n10);
             n9.AddChildren(n10);
 
-            DoSearch.FindPath(n6, n10);
+            var fullPath = DFS.FindFullPath(n6, n10);
 
-            foreach(var item in DoSearch.fullPath)
+            foreach(var item in fullPath)
             {
                 Console.Write($"{item.Name} ");
             }
@@ -68,10 +68,20 @@ namespace GraphAlgorithms.DetphFirstSearch
         }
 
 
-        public class DoSearch
+        public class DFS
         {
-            public static LinkedList<Node> fullPath { get; set; } = new LinkedList<Node>();
+           public static LinkedList<Node> fullPath { get; set; } = new LinkedList<Node>();
            static List<Node> visited = new List<Node>();
+
+
+            public static LinkedList<Node> FindFullPath(Node start, Node end)
+            {
+                if(FindPath(start, end))
+                {
+                    fullPath.AddFirst(start);
+                }
+                return fullPath;
+            }
 
             public static bool FindPath(Node start, Node end)
             {
