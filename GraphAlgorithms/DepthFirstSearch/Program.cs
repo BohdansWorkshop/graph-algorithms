@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GraphAlgorithms.DetphFirstSearch
-
+namespace GraphAlgorithms.DepthFirstSearch
 {
     class Program
     {
@@ -40,7 +39,7 @@ namespace GraphAlgorithms.DetphFirstSearch
             {
                 Console.Write($"{item.Name} ");
             }
-
+            Console.ReadKey();
         }
 
 

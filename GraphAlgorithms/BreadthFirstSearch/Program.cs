@@ -7,30 +7,6 @@ namespace GraphAlgorithms.BreadthFirstSearch
     {
         static void Main(string[] args)
         {
-            //var n1 = new Node("n1");
-            //var n2 = new Node("n2");
-            //var n3 = new Node("n3");
-            //var n4 = new Node("n4");
-            //var n5 = new Node("n5");
-            //var n6 = new Node("n6");
-            //var n7 = new Node("n7");
-            //var n8 = new Node("n8");
-            //var n9 = new Node("n9");
-            //var n10 = new Node("n10");
-
-            //n1.AddChildren(n2).AddChildren(n3).AddChildren(n4);
-
-            //n2.AddChildren(n5);
-            //n3.AddChildren(n5);
-            //n4.AddChildren(n6);
-            //n5.AddChildren(n7);
-
-            //n6.AddChildren(n8);
-            //n6.AddChildren(n9);
-
-            //n7.AddChildren(n10);
-            //n8.AddChildren(n10);
-            //n9.AddChildren(n10);
 
             var n01 = new Node("01");
             var n02 = new Node("02");
@@ -64,6 +40,8 @@ namespace GraphAlgorithms.BreadthFirstSearch
             {
                 Console.Write($"{item.Name} ");
             }
+
+            Console.ReadKey();
         }
     }
 
